@@ -31,7 +31,7 @@
     "html-webpack-plugin": "1.6.0",
     "imports-loader": "0.6.4",
     "lodash": "3.10.1",
-    "moment": "2.10.6",
+    "moment": "2.11.2",
     "node-libs-browser": "0.5.3",
     "optimist": "0.6.1",
     "raw-loader": "0.5.1",
