@@ -25,19 +25,19 @@ require('../images/favicon.ico');
 /* 
  * Our Demos
  */
-import {DemoFormSku} from
+import { DemoFormSku } from
   './forms/demo_form_sku';
-import {DemoFormSkuBuilder} from
+import { DemoFormSkuBuilder } from
   './forms/demo_form_sku_with_builder';
-import {DemoFormWithValidationsShorthand} from
+import { DemoFormWithValidationsShorthand } from
   './forms/demo_form_with_validations_shorthand';
-import {DemoFormWithValidationsExplicit} from
+import { DemoFormWithValidationsExplicit } from
   './forms/demo_form_with_validations_explicit';
-import {DemoFormWithCustomValidations} from
-   './forms/demo_form_with_custom_validations';
-import {DemoFormWithEvents} from
-   './forms/demo_form_with_events';
-import {DemoFormNgModel} from
+import { DemoFormWithCustomValidations } from
+  './forms/demo_form_with_custom_validations';
+import { DemoFormWithEvents } from
+  './forms/demo_form_with_events';
+import { DemoFormNgModel } from
   './forms/demo_form_ng_model';
 
 /*
@@ -76,9 +76,9 @@ class FormsDemoApp {
     FormsModule,
     ReactiveFormsModule
   ],
-  bootstrap: [ FormsDemoApp ]
+  bootstrap: [FormsDemoApp]
 })
-class FormsDemoAppModule {}
+class FormsDemoAppModule { }
 
 platformBrowserDynamic().bootstrapModule(FormsDemoAppModule)
   .catch((err: any) => console.error(err));
