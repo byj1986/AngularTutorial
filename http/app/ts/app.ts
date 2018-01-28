@@ -12,18 +12,18 @@ import { HttpModule } from '@angular/http';
 /*
  * Components
  */
-import { SimpleHTTPComponent } from 'components/SimpleHTTPComponent';
-import { MoreHTTPRequests } from 'components/MoreHTTPRequests';
+import { SimpleHTTPComponent } from './components/SimpleHTTPComponent';
+import { MoreHTTPRequests } from './components/MoreHTTPRequests';
 import {
   YouTubeSearchComponent,
   SearchBox,
   SearchResultComponent
-} from 'components/YouTubeSearchComponent';
+} from './components/YouTubeSearchComponent';
 
 /*
  * Injectables
  */
-import { youTubeServiceInjectables } from 'components/YouTubeSearchComponent';
+import { youTubeServiceInjectables } from './components/YouTubeSearchComponent';
 
 /*
  * Webpack

@@ -34,7 +34,7 @@ export class MoreHTTPRequests {
       JSON.stringify({
         body: 'bar',
         title: 'foo',
-        userId: 1
+        userId: 12
       }))
       .subscribe((res: Response) => {
         this.data = res.json();
@@ -52,6 +52,7 @@ export class MoreHTTPRequests {
   }
 
   makeHeaders(): void {
+    this.loading = true;
     let headers: Headers = new Headers();
     headers.append('X-API-TOKEN', 'ng-book');
 
@@ -61,6 +62,7 @@ export class MoreHTTPRequests {
     this.http.get('http://jsonplaceholder.typicode.com/posts/1', opts)
       .subscribe((res: Response) => {
         this.data = res.json();
+        this.loading = false;
       });
   }
 }

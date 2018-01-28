@@ -35,12 +35,12 @@ class SearchResult {
   videoUrl: string;
 
   constructor(obj?: any) {
-    this.id              = obj && obj.id             || null;
-    this.title           = obj && obj.title          || null;
-    this.description     = obj && obj.description    || null;
-    this.thumbnailUrl    = obj && obj.thumbnailUrl   || null;
-    this.videoUrl        = obj && obj.videoUrl       ||
-                             `https://www.youtube.com/watch?v=${this.id}`;
+    this.id = obj && obj.id || null;
+    this.title = obj && obj.title || null;
+    this.description = obj && obj.description || null;
+    this.thumbnailUrl = obj && obj.thumbnailUrl || null;
+    this.videoUrl = obj && obj.videoUrl ||
+      `https://www.youtube.com/watch?v=${this.id}`;
   }
 }
 
@@ -51,8 +51,8 @@ class SearchResult {
 @Injectable()
 export class YouTubeService {
   constructor(private http: Http,
-              @Inject(YOUTUBE_API_KEY) private apiKey: string,
-              @Inject(YOUTUBE_API_URL) private apiUrl: string) {
+    @Inject(YOUTUBE_API_KEY) private apiKey: string,
+    @Inject(YOUTUBE_API_URL) private apiUrl: string) {
   }
 
   search(query: string): Observable<SearchResult[]> {
@@ -80,9 +80,9 @@ export class YouTubeService {
 }
 
 export var youTubeServiceInjectables: Array<any> = [
-  {provide: YouTubeService, useClass: YouTubeService},
-  {provide: YOUTUBE_API_KEY, useValue: YOUTUBE_API_KEY},
-  {provide: YOUTUBE_API_URL, useValue: YOUTUBE_API_URL}
+  { provide: YouTubeService, useClass: YouTubeService },
+  { provide: YOUTUBE_API_KEY, useValue: YOUTUBE_API_KEY },
+  { provide: YOUTUBE_API_URL, useValue: YOUTUBE_API_URL }
 ];
 
 /**
@@ -100,8 +100,7 @@ export class SearchBox implements OnInit {
   loading: EventEmitter<boolean> = new EventEmitter<boolean>();
   results: EventEmitter<SearchResult[]> = new EventEmitter<SearchResult[]>();
 
-  constructor(private youtube: YouTubeService,
-              private el: ElementRef) {
+  constructor(private youtube: YouTubeService, private el: ElementRef) {
   }
 
   ngOnInit(): void {
@@ -109,24 +108,24 @@ export class SearchBox implements OnInit {
     Observable.fromEvent(this.el.nativeElement, 'keyup')
       .map((e: any) => e.target.value) // extract the value of the input
       .filter((text: string) => text.length > 1) // filter out if empty
-      .debounceTime(250)                         // only once every 250ms
+      .debounceTime(100)                         // only once every 250ms
       .do(() => this.loading.next(true))         // enable loading
       // search, discarding old events if new input comes in
       .map((query: string) => this.youtube.search(query))
       .switch()
       // act on the return of the search
       .subscribe(
-        (results: SearchResult[]) => { // on sucesss
-          this.loading.next(false);
-          this.results.next(results);
-        },
-        (err: any) => { // on error
-          console.log(err);
-          this.loading.next(false);
-        },
-        () => { // on completion
-          this.loading.next(false);
-        }
+      (results: SearchResult[]) => { // on sucesss
+        this.loading.next(false);
+        this.results.next(results);
+      },
+      (err: any) => { // on error
+        console.log(err);
+        this.loading.next(false);
+      },
+      () => { // on completion
+        this.loading.next(false);
+      }
       );
 
   }

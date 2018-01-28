@@ -1,8 +1,8 @@
 /*
  * Angular
  */
-import {Component} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import { Component } from '@angular/core';
+import { Http, Response } from '@angular/http';
 
 @Component({
   selector: 'simple-http',
