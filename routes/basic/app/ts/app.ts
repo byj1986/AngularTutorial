@@ -5,20 +5,20 @@ import {
   NgModule,
   Component
 } from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   RouterModule,
   Routes
 } from '@angular/router';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { LocationStrategy, PathLocationStrategy, HashLocationStrategy } from '@angular/common';
 
 /*
  * Components
  */
-import {HomeComponent} from 'components/HomeComponent';
-import {AboutComponent} from 'components/AboutComponent';
-import {ContactComponent} from 'components/ContactComponent';
+import { HomeComponent } from './components/HomeComponent';
+import { AboutComponent } from './components/AboutComponent';
+import { ContactComponent } from './components/ContactComponent';
 
 /*
  * Webpack
@@ -32,9 +32,11 @@ require('css/styles.css');
     <nav>
       <a>Navigation:</a>
       <ul>
+        <li><a href="/#/home">New Home</a></li>
         <li><a [routerLink]="['home']">Home</a></li>
         <li><a [routerLink]="['about']">About</a></li>
         <li><a [routerLink]="['contact']">Contact Us</a></li>
+        <li><a [routerLink]="['contactus']">222Contact Us2</a></li>
       </ul>
     </nav>
 
@@ -50,7 +52,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'contactus', redirectTo: 'contact' },
+  { path: 'contactus', redirectTo: 'about' },
 ];
 
 @NgModule({
@@ -64,12 +66,14 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes) // <-- routes
   ],
-  bootstrap: [ RoutesDemoApp ],
+  bootstrap: [RoutesDemoApp],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    //{ provide: PathLocationStrategy, useClass: HashLocationStrategy },
+    //Same as <base href="/"> in index.html
+    //{ provide: APP_BASE_HREF, useValue: '/' }
   ]
 })
-class RoutesDemoAppModule {}
+class RoutesDemoAppModule { }
 
 platformBrowserDynamic().bootstrapModule(RoutesDemoAppModule)
   .catch((err: any) => console.error(err));

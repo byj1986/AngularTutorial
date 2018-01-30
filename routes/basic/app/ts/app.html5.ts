@@ -5,20 +5,20 @@ import {
   NgModule,
   Component
 } from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   RouterModule,
   Routes
 } from '@angular/router';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 /*
  * Components
  */
-import {HomeComponent} from 'components/HomeComponent';
-import {AboutComponent} from 'components/AboutComponent';
-import {ContactComponent} from 'components/ContactComponent';
+import { HomeComponent } from './components/HomeComponent';
+import { AboutComponent } from './components/AboutComponent';
+import { ContactComponent } from './components/ContactComponent';
 
 /*
  * Webpack
@@ -35,6 +35,7 @@ require('css/styles.css');
         <li><a [routerLink]="['home']">Home</a></li>
         <li><a [routerLink]="['about']">About</a></li>
         <li><a [routerLink]="['contact']">Contact Us</a></li>
+        <li><a [routerLink]="['contactus']">Contact Us2</a></li>
       </ul>
     </nav>
 
@@ -64,10 +65,10 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes) // <-- routes
   ],
-  bootstrap: [ RoutesDemoApp ],
-  providers: [ ]
+  bootstrap: [RoutesDemoApp],
+  providers: []
 })
-class RoutesDemoAppModule {}
+class RoutesDemoAppModule { }
 
 platformBrowserDynamic().bootstrapModule(RoutesDemoAppModule)
   .catch((err: any) => console.error(err));
