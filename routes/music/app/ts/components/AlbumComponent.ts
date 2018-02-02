@@ -1,14 +1,14 @@
 /*
  * Angular
  */
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
- /*
-  * Services
-  */
-import {SpotifyService} from 'services/SpotifyService';
+/*
+ * Services
+ */
+import { SpotifyService } from '../services/SpotifyService';
 
 @Component({
   selector: 'album',
@@ -39,8 +39,8 @@ export class AlbumComponent implements OnInit {
   album: Object;
 
   constructor(private route: ActivatedRoute,
-              private spotify: SpotifyService, // <-- injected
-              private location: Location) {
+    private spotify: SpotifyService, // <-- injected
+    private location: Location) {
     route.params.subscribe(params => { this.id = params['id']; });
   }
 

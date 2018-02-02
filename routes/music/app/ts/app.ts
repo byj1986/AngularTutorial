@@ -22,15 +22,15 @@ import {
 /*
  * Components
  */
-import {SearchComponent} from 'components/SearchComponent';
-import {ArtistComponent} from 'components/ArtistComponent';
-import {TrackComponent} from 'components/TrackComponent';
-import {AlbumComponent} from 'components/AlbumComponent';
+import { SearchComponent } from './components/SearchComponent';
+import { ArtistComponent } from './components/ArtistComponent';
+import { TrackComponent } from './components/TrackComponent';
+import { AlbumComponent } from './components/AlbumComponent';
 
 /*
  * Services
  */
-import {SPOTIFY_PROVIDERS} from 'services/SpotifyService';
+import { SPOTIFY_PROVIDERS } from './services/SpotifyService';
 
 /*
  * Webpack
@@ -68,14 +68,14 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes) // <-- routes
   ],
-  bootstrap: [ RoutesDemoApp ],
+  bootstrap: [RoutesDemoApp],
   providers: [
     SPOTIFY_PROVIDERS,
-    {provide: APP_BASE_HREF, useValue: '/'},
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ]
 })
-class RoutesDemoAppModule {}
+class RoutesDemoAppModule { }
 
 platformBrowserDynamic().bootstrapModule(RoutesDemoAppModule)
   .catch((err: any) => console.error(err));

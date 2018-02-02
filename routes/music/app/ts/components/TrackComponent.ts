@@ -2,14 +2,14 @@
  * Angular
  */
 
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 /*
  * Services
  */
-import {SpotifyService} from 'services/SpotifyService';
+import { SpotifyService } from './services/SpotifyService';
 
 
 // angular2 doesn't like 'track' as the selector
@@ -38,7 +38,7 @@ export class TrackComponent implements OnInit {
   track: Object;
 
   constructor(private route: ActivatedRoute, private spotify: SpotifyService,
-              private location: Location) {
+    private location: Location) {
     route.params.subscribe(params => { this.id = params['id']; });
   }
 
