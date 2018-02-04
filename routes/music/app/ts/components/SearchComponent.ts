@@ -11,7 +11,7 @@ import {
 /*
  * Services
  */
-import { SpotifyService } from './services/SpotifyService';
+import { SpotifyService } from '..//services/SpotifyService';
 
 @Component({
   selector: 'search',
