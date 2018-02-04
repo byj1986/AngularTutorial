@@ -1,16 +1,10 @@
 /*
  * Angular Imports
  */
-import {
-  NgModule,
-  Component
-} from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  RouterModule,
-  Routes
-} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LocationStrategy, PathLocationStrategy, HashLocationStrategy } from '@angular/common';
 
 /*
@@ -68,7 +62,13 @@ const routes: Routes = [
   ],
   bootstrap: [RoutesDemoApp],
   providers: [
-    //{ provide: PathLocationStrategy, useClass: HashLocationStrategy },
+    { provide: PathLocationStrategy, useClass: HashLocationStrategy },
+    //if use { provide: PathLocationStrategy, useClass: HashLocationStrategy }
+    //App will have # in browser
+    //eg localhost:8080/#/about
+    //if no { provide: PathLocationStrategy, useClass: HashLocationStrategy }
+    //the url looks like localhost:8080/about
+
     //Same as <base href="/"> in index.html
     //{ provide: APP_BASE_HREF, useValue: '/' }
   ]
