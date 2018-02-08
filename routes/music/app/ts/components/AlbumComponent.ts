@@ -1,14 +1,16 @@
 /*
  * Angular
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 /*
  * Services
  */
-import { SpotifyService } from '..//services/SpotifyService';
+// import { SpotifyService } from '..//services/SpotifyService';
+import { MusicSearchService } from '..//services/MusicSearchService';
+import { print } from '@angular/core/src/facade/lang';
 
 @Component({
   selector: 'album',
@@ -39,13 +41,13 @@ export class AlbumComponent implements OnInit {
   album: Object;
 
   constructor(private route: ActivatedRoute,
-    private spotify: SpotifyService, // <-- injected
+    @Inject('MusicSearchService') private musicSearchService: MusicSearchService,
     private location: Location) {
     route.params.subscribe(params => { this.id = params['id']; });
   }
 
   ngOnInit(): void {
-    this.spotify
+    this.musicSearchService
       .getAlbum(this.id)
       .subscribe((res: any) => this.renderAlbum(res));
   }

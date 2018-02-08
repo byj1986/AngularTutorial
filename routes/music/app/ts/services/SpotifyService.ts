@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { MusicSearchService } from './MusicSearchService';
 
 import 'rxjs/Rx';
 
@@ -10,14 +11,18 @@ import 'rxjs/Rx';
  */
 
 @Injectable()
-export class SpotifyService {
-  static BASE_URL: string = 'https://api.spotify.com/v1';
+export class SpotifyService implements MusicSearchService {
+  baseUrl: string = 'https://api.spotify.com/v1';
 
   constructor(private http: Http) {
   }
 
+  test(query: string): void {
+    console.info('iTunesService.test');
+  }
+
   query(URL: string, params?: Array<string>): Observable<any[]> {
-    let queryURL: string = `${SpotifyService.BASE_URL}${URL}`;
+    let queryURL: string = `${this.baseUrl}${URL}`;
     if (params) {
       queryURL = `${queryURL}?${params.join('&')}`;
     }
@@ -26,6 +31,7 @@ export class SpotifyService {
   }
 
   search(query: string, type: string): Observable<any[]> {
+    console.info('Use SpotifyService');
     return this.query(`/search`, [
       `q=${query}`,
       `type=${type}`

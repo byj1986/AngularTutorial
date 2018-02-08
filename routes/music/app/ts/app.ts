@@ -1,16 +1,18 @@
 /*
  * Angular Imports
  */
-import {
-  Component
-} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
+import {
+  LocationStrategy,
+  HashLocationStrategy,
+  APP_BASE_HREF
+} from '@angular/common';
 
 /*
  * Components
@@ -23,7 +25,9 @@ import { AlbumComponent } from './components/AlbumComponent';
 /*
  * Services
  */
-import { SPOTIFY_PROVIDERS } from './services/SpotifyService';
+import { iTunesService, ITUNES_PROVIDERS } from './services/iTunesService';
+import { MusicSearchService } from './services/MusicSearchService';
+import { SpotifyService, SPOTIFY_PROVIDERS } from './services/SpotifyService';
 
 /*
  * Webpack
@@ -38,6 +42,11 @@ require('css/styles.css');
 })
 class RoutesDemoApp {
   query: string;
+
+  ngOnInit(): void {
+    console.info('RoutesDemoApp ngOnInit');
+  }
+
 }
 
 const routes: Routes = [
@@ -54,16 +63,18 @@ const routes: Routes = [
     SearchComponent,
     ArtistComponent,
     TrackComponent,
-    AlbumComponent
+    AlbumComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(routes) // <-- routes
+    RouterModule.forRoot(routes), // <-- routes
   ],
   bootstrap: [RoutesDemoApp],
   providers: [
     SPOTIFY_PROVIDERS,
+    ITUNES_PROVIDERS,
+    { provide: 'MusicSearchService', useClass: iTunesService },
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ]

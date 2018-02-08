@@ -2,15 +2,17 @@
  * Angular
  */
 
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
 /*
  * Services
  */
-import { SpotifyService } from '..//services/SpotifyService';
+// import { SpotifyService } from '..//services/SpotifyService';
 
+import { MusicSearchService } from '..//services/MusicSearchService';
+import { Observable } from 'rxjs/Observable';
 
 // angular2 doesn't like 'track' as the selector
 // because apparently it's an existing HTML element
@@ -37,13 +39,14 @@ export class TrackComponent implements OnInit {
   id: string;
   track: Object;
 
-  constructor(private route: ActivatedRoute, private spotify: SpotifyService,
+  constructor(private route: ActivatedRoute,
+    @Inject('MusicSearchService') private musicSearchService: MusicSearchService,
     private location: Location) {
-    route.params.subscribe(params => { this.id = params['id']; });
+    route.params.subscribe((params: Observable<Params>) => { this.id = params['id']; });
   }
 
   ngOnInit(): void {
-    this.spotify
+    this.musicSearchService
       .getTrack(this.id)
       .subscribe((res: any) => this.renderTrack(res));
   }

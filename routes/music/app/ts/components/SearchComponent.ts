@@ -2,17 +2,16 @@
  * Angular
  */
 
-import { Component, OnInit } from '@angular/core';
-import {
-  Router,
-  ActivatedRoute,
-} from '@angular/router';
+import { Component, OnInit, Inject, Injectable } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 /*
  * Services
  */
-import { SpotifyService } from '..//services/SpotifyService';
+// import { SpotifyService } from '..//services/SpotifyService';
 
+import { MusicSearchService } from '..//services/MusicSearchService';
+// import { Injector } from '@angular/core/src/di/injector';
 @Component({
   selector: 'search',
   template: `
@@ -32,7 +31,6 @@ import { SpotifyService } from '..//services/SpotifyService';
 
     <div *ngIf="results.length">
       <h1>Results</h1>
-
       <div class="row">
         <div class="col-sm-6 col-md-4" *ngFor="let t of results">
           <div class="thumbnail">
@@ -66,12 +64,12 @@ import { SpotifyService } from '..//services/SpotifyService';
   </div>
   `
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit {;
   query: string;
   results: Object;
 
-  constructor(private spotify: SpotifyService,
-    private router: Router,
+  constructor(private router: Router,
+    @Inject('MusicSearchService') private musicSearchService: MusicSearchService,
     private route: ActivatedRoute) {
     this.route
       .queryParams
@@ -88,17 +86,23 @@ export class SearchComponent implements OnInit {
   }
 
   search(): void {
-    console.log('this.query', this.query);
-    if (!this.query) {
-      return;
-    }
+    console.info(this.musicSearchService);
+    // this.musicSearchService.test(this.query);
+    // // console.log(this.musicSearchService);
+    // if (!this.query) {
+    //   return;
+    // }
 
-    this.spotify
-      .searchTrack(this.query)
-      .subscribe((res: any) => this.renderResults(res));
+    // this.musicSearchService.search(this.query, "search");
+    // this.musicSearchService
+    //   .searchTrack(this.query)
+    //   .subscribe((res: any) => this.renderResults(res),
+    //   (error: any) => console.error(error),
+    //   () => { console.info("Search completed") });
   }
 
   renderResults(res: any): void {
+    console.info('renderResults');
     this.results = null;
     if (res && res.tracks && res.tracks.items) {
       this.results = res.tracks.items;
