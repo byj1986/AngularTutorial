@@ -8,10 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 /*
  * Services
  */
-// import { SpotifyService } from '..//services/SpotifyService';
 
 import { MusicSearchService } from '..//services/MusicSearchService';
-// import { Injector } from '@angular/core/src/di/injector';
 @Component({
   selector: 'search',
   template: `
@@ -77,7 +75,7 @@ export class SearchComponent implements OnInit {;
   }
 
   ngOnInit(): void {
-    this.search();
+     this.search();
   }
 
   submit(query: string): void {
@@ -86,23 +84,14 @@ export class SearchComponent implements OnInit {;
   }
 
   search(): void {
-    console.info(this.musicSearchService);
-    // this.musicSearchService.test(this.query);
-    // // console.log(this.musicSearchService);
-    // if (!this.query) {
-    //   return;
-    // }
-
-    // this.musicSearchService.search(this.query, "search");
-    // this.musicSearchService
-    //   .searchTrack(this.query)
-    //   .subscribe((res: any) => this.renderResults(res),
-    //   (error: any) => console.error(error),
-    //   () => { console.info("Search completed") });
+    this.musicSearchService
+      .searchTrack(this.query)
+      .subscribe((res: any) => this.renderResults(res),
+      (error: any) => console.error(error),
+      () => { console.info("Search completed") });
   }
 
   renderResults(res: any): void {
-    console.info('renderResults');
     this.results = null;
     if (res && res.tracks && res.tracks.items) {
       this.results = res.tracks.items;

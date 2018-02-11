@@ -9,8 +9,6 @@ import { Location } from '@angular/common';
 /*
  * Services
  */
-// import { SpotifyService } from '..//services/SpotifyService';
-
 import { MusicSearchService } from '..//services/MusicSearchService';
 import { Observable } from 'rxjs/Observable';
 

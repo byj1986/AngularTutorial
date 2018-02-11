@@ -8,7 +8,6 @@ import { Location } from '@angular/common';
 /*
  * Services
  */
-// import { SpotifyService } from '..//services/SpotifyService';
 import { MusicSearchService } from '..//services/MusicSearchService';
 import { print } from '@angular/core/src/facade/lang';
 

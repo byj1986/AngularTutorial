@@ -18,7 +18,7 @@ export class SpotifyService implements MusicSearchService {
   }
 
   test(query: string): void {
-    console.info('iTunesService.test');
+    console.info('SpotifyService.test');
   }
 
   query(URL: string, params?: Array<string>): Observable<any[]> {
