@@ -31,12 +31,15 @@ export class iTunesService implements MusicSearchService {
     }
 
     search(query: string, type: string): Observable<any[]> {
-        // console.info('Use iTunesService');
+        console.info('Use iTunesService');
         let results = this.query(`search`, [
             `term=${query.replace(' ', '+')}`,
         ]);
-        results.subscribe(x => console.info(x));
-        console.info(results);
+        results.forEach(x => {
+            console.info(x);
+            x.results.forEach(y => console.info(y.artistId));
+        });
+
         return results;
     }
 
