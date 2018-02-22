@@ -1,12 +1,12 @@
 /*
  * Angular
  */
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 /*
  * Services
  */
-import {AuthService} from 'services/AuthService';
+import { AuthService } from '../services/AuthService';
 
 @Component({
   selector: 'login',
@@ -48,7 +48,7 @@ export class LoginComponent {
     this.message = '';
     if (!this.authService.login(username, password)) {
       this.message = 'Incorrect credentials.';
-      setTimeout(function() {
+      setTimeout(function () {
         this.message = '';
       }.bind(this), 2500);
     }
