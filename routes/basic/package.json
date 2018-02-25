@@ -27,6 +27,7 @@
     "css-loader": "0.15.5",
     "extract-text-webpack-plugin": "0.8.2",
     "file-loader": "0.8.4",
+    "go": "^3.0.0-rc.3",
     "html-webpack-plugin": "1.6.0",
     "imports-loader": "0.6.4",
     "lodash": "3.10.1",
