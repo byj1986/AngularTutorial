@@ -48,9 +48,7 @@ export class LoginComponent {
     this.message = '';
     if (!this.authService.login(username, password)) {
       this.message = 'Incorrect credentials.';
-      setTimeout(function () {
-        this.message = '';
-      }.bind(this), 2500);
+      setTimeout(function () { this.message = ''; }.bind(this), 2500);
     }
     return false;
   }
