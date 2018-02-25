@@ -5,25 +5,14 @@ import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  RouterModule,
-  Router,
-  Routes
-} from '@angular/router';
-import {
-  LocationStrategy,
-  HashLocationStrategy
-} from '@angular/common';
+import { RouterModule, Router, Routes } from '@angular/router';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 /*
  * Components
  */
-import {HomeComponent} from 'components/HomeComponent';
-import {
-  routes as childRoutes,
-  ProductsComponent,
-  ProductsComponentModule
-} from 'components/ProductsComponent';
+import { HomeComponent } from './components/HomeComponent';
+import { routes as childRoutes, ProductsComponent, ProductsComponentModule } from './components/ProductsComponent';
 
 /*
  * Webpack
@@ -71,12 +60,12 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ProductsComponentModule
   ],
-  bootstrap: [ RoutesDemoApp ],
+  bootstrap: [RoutesDemoApp],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ]
 })
-class RoutesDemoAppModule {}
+class RoutesDemoAppModule { }
 
 platformBrowserDynamic().bootstrapModule(RoutesDemoAppModule)
   .catch((err: any) => console.error(err));

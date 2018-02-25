@@ -1,24 +1,16 @@
 /*
  * Angular
  */
-import {
-  NgModule,
-  Component
-} from '@angular/core';
-import {
-  RouterModule,
-  ActivatedRoute,
-  Router,
-  Routes
-} from '@angular/router';
+import { NgModule, Component } from '@angular/core';
+import { RouterModule, ActivatedRoute, Router, Routes } from '@angular/router';
 
 /*
  * Components
  */
-import {MainComponent} from 'components/products/MainComponent';
-import {InterestComponent} from 'components/products/InterestComponent';
-import {SportifyComponent} from 'components/products/SportifyComponent';
-import {ByIdComponent} from 'components/products/ByIdComponent';
+import { MainComponent } from '../components/products/MainComponent';
+import { InterestComponent } from '../components/products/InterestComponent';
+import { SportifyComponent } from '../components/products/SportifyComponent';
+import { ByIdComponent } from '../components/products/ByIdComponent';
 
 @Component({
   selector: 'products',
@@ -43,8 +35,8 @@ export class ProductsComponent {
   constructor(private router: Router, private route: ActivatedRoute) {
   }
 
-  goToProduct(id:string): void {
-    this.router.navigate(['./', id], {relativeTo: this.route});
+  goToProduct(id: string): void {
+    this.router.navigate(['./', id], { relativeTo: this.route });
   }
 }
 
@@ -71,7 +63,7 @@ export const routes: Routes = [
     SportifyComponent,
     ByIdComponent
   ],
-  imports: [ RouterModule ]
+  imports: [RouterModule]
 })
-export class ProductsComponentModule {}
+export class ProductsComponentModule { }
 
