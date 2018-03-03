@@ -1,9 +1,7 @@
 /*
  * Angular
  */
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -11,7 +9,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 /*
  * Services
  */
-import {ApiService, API_URL} from 'services/ApiService';
+import { ApiService, API_URL } from './services/ApiService';
 
 /*
  * Webpack
@@ -36,9 +34,9 @@ class DiValueApp {
 const isProduction: boolean = false;
 
 @NgModule({
-  declarations: [ DiValueApp ],
-  imports: [ BrowserModule ],
-  bootstrap: [ DiValueApp ],
+  declarations: [DiValueApp],
+  imports: [BrowserModule],
+  bootstrap: [DiValueApp],
   providers: [
     { provide: ApiService, useClass: ApiService },
     {
@@ -49,7 +47,7 @@ const isProduction: boolean = false;
     }
   ]
 })
-class DiValueAppAppModule {}
+class DiValueAppAppModule { }
 
 platformBrowserDynamic().bootstrapModule(DiValueAppAppModule)
   .catch((err: any) => console.error(err));

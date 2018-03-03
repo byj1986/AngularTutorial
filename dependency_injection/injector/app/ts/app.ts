@@ -1,10 +1,7 @@
 /*
  * Angular
  */
-import {
-  Component,
-  ReflectiveInjector,
-} from '@angular/core';
+import { Component, ReflectiveInjector, } from '@angular/core';
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
@@ -45,11 +42,11 @@ class DiSampleApp {
 
 // no need to add injectables here
 @NgModule({
-  declarations: [ DiSampleApp ],
-  imports: [ BrowserModule ],
-  bootstrap: [ DiSampleApp ]
+  declarations: [DiSampleApp],
+  imports: [BrowserModule],
+  bootstrap: [DiSampleApp]
 })
-class DiSampleAppModule {}
+class DiSampleAppModule { }
 
 platformBrowserDynamic().bootstrapModule(DiSampleAppModule);
 

@@ -1,9 +1,7 @@
 /*
  * Angular
  */
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -41,7 +39,7 @@ class ParamService {
 })
 class DiSampleApp {
   constructor(private simpleService: SimpleService,
-              private paramService: ParamService) {}
+    private paramService: ParamService) { }
 
   invokeService(): void {
     console.log('SimpleService returned', this.simpleService.getValue());
@@ -50,9 +48,9 @@ class DiSampleApp {
 }
 
 @NgModule({
-  declarations: [ DiSampleApp ],
-  imports: [ BrowserModule ],
-  bootstrap: [ DiSampleApp ],
+  declarations: [DiSampleApp],
+  imports: [BrowserModule],
+  bootstrap: [DiSampleApp],
   providers: [
     SimpleService,
     {
@@ -61,7 +59,7 @@ class DiSampleApp {
     }
   ]
 })
-class DiSampleAppAppModule {}
+class DiSampleAppAppModule { }
 
 platformBrowserDynamic().bootstrapModule(DiSampleAppAppModule)
   .catch((err: any) => console.error(err));

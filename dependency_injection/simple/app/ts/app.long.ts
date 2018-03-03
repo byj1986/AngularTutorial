@@ -1,10 +1,7 @@
 /*
  * Angular
  */
-import {
-  Component,
-  Inject,
-} from '@angular/core';
+import { Component, Inject, } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -12,7 +9,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 /*
  * Services
  */
-import {ApiService} from 'services/ApiService';
+import { ApiService } from './services/ApiService';
 
 /*
  * Webpack
@@ -38,14 +35,14 @@ class DiSampleApp {
 }
 
 @NgModule({
-  declarations: [ DiSampleApp ],
-  imports: [ BrowserModule ],
-  bootstrap: [ DiSampleApp ],
+  declarations: [DiSampleApp],
+  imports: [BrowserModule],
+  bootstrap: [DiSampleApp],
   providers: [
     { provide: ApiService, useClass: ApiService }
   ]
 })
-class DiSampleAppAppModule {}
+class DiSampleAppAppModule { }
 
 platformBrowserDynamic().bootstrapModule(DiSampleAppAppModule)
   .catch((err: any) => console.error(err));

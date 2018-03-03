@@ -5,11 +5,7 @@ import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  RouterModule,
-  Router,
-  Routes
-} from '@angular/router';
+import { RouterModule, Router, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
