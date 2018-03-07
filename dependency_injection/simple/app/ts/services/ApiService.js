@@ -1,7 +1,6 @@
 "use strict";
 var ApiService = (function () {
-    function ApiService() {
-    }
+    function ApiService() {}
     ApiService.prototype.get = function () {
         console.log('Getting resource...');
     };

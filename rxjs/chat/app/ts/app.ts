@@ -6,45 +6,30 @@
  *
  */
 
-import {
-  NgModule,
-  Component
-} from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  FormsModule
-} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 /*
  * Components
  */
-import {ChatNavBar} from './components/ChatNavBar';
-import {
-  ChatThreads,
-  ChatThread
-  } from './components/ChatThreads';
-import {
-  ChatWindow,
-  ChatMessage
-  } from './components/ChatWindow';
+import { ChatNavBar } from './components/ChatNavBar';
+import { ChatThreads, ChatThread } from './components/ChatThreads';
+import { ChatWindow, ChatMessage } from './components/ChatWindow';
 
 /*
  * Injectables
  */
-import {servicesInjectables} from './services/services';
-import {utilInjectables} from './util/util';
+import { servicesInjectables } from './services/services';
+import { utilInjectables } from './util/util';
 
 /*
  * Services
  */
-import {
-  MessagesService,
-  ThreadsService,
-  UserService
-} from './services/services';
+import { MessagesService, ThreadsService, UserService } from './services/services';
 
-import {ChatExampleData} from './ChatExampleData';
+import { ChatExampleData } from './ChatExampleData';
 
 /*
  * Webpack
@@ -65,8 +50,8 @@ require('../css/styles.css');
 })
 class ChatApp {
   constructor(private messagesService: MessagesService,
-              private threadsService: ThreadsService,
-              private userService: UserService) {
+    private threadsService: ThreadsService,
+    private userService: UserService) {
     ChatExampleData.init(messagesService, threadsService, userService);
   }
 }
@@ -85,10 +70,10 @@ class ChatApp {
     BrowserModule,
     FormsModule
   ],
-  bootstrap: [ ChatApp ],
-  providers: [ servicesInjectables ]
+  bootstrap: [ChatApp],
+  providers: [servicesInjectables]
 })
-export class ChatAppModule {}
+export class ChatAppModule { }
 
 platformBrowserDynamic().bootstrapModule(ChatAppModule);
 

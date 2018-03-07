@@ -1,20 +1,19 @@
 /* tslint:disable:max-line-length */
-import {User, Thread, Message} from './models';
-import {MessagesService, ThreadsService,
-        UserService} from './services/services';
+import { User, Thread, Message } from './models';
+import { MessagesService, ThreadsService, UserService } from './services/services';
 import * as moment from 'moment';
 
 // the person using the app us Juliet
-let me: User      = new User('Juliet', require('images/avatars/female-avatar-1.png'));
+let me: User = new User('Juliet', require('images/avatars/female-avatar-1.png'));
 let ladycap: User = new User('Lady Capulet', require('images/avatars/female-avatar-2.png'));
-let echo: User    = new User('Echo Bot', require('images/avatars/male-avatar-1.png'));
-let rev: User     = new User('Reverse Bot', require('images/avatars/female-avatar-4.png'));
-let wait: User    = new User('Waiting Bot', require('images/avatars/male-avatar-2.png'));
+let echo: User = new User('Echo Bot', require('images/avatars/male-avatar-1.png'));
+let rev: User = new User('Reverse Bot', require('images/avatars/female-avatar-4.png'));
+let wait: User = new User('Waiting Bot', require('images/avatars/male-avatar-2.png'));
 
 let tLadycap: Thread = new Thread('tLadycap', ladycap.name, ladycap.avatarSrc);
-let tEcho: Thread    = new Thread('tEcho', echo.name, echo.avatarSrc);
-let tRev: Thread     = new Thread('tRev', rev.name, rev.avatarSrc);
-let tWait: Thread    = new Thread('tWait', wait.name, wait.avatarSrc);
+let tEcho: Thread = new Thread('tEcho', echo.name, echo.avatarSrc);
+let tRev: Thread = new Thread('tRev', rev.name, rev.avatarSrc);
+let tWait: Thread = new Thread('tWait', wait.name, wait.avatarSrc);
 
 let initialMessages: Array<Message> = [
   new Message({
@@ -51,8 +50,8 @@ let initialMessages: Array<Message> = [
 
 export class ChatExampleData {
   static init(messagesService: MessagesService,
-              threadsService: ThreadsService,
-              userService: UserService): void {
+    threadsService: ThreadsService,
+    userService: UserService): void {
 
     // TODO make `messages` hot
     messagesService.messages.subscribe(() => ({}));
@@ -61,7 +60,7 @@ export class ChatExampleData {
     userService.setCurrentUser(me);
 
     // create the initial messages
-    initialMessages.map( (message: Message) => messagesService.addMessage(message) );
+    initialMessages.map((message: Message) => messagesService.addMessage(message));
 
     threadsService.setCurrentThread(tEcho);
 
@@ -72,7 +71,7 @@ export class ChatExampleData {
 
     // echo bot
     messagesService.messagesForThreadUser(tEcho, echo)
-      .forEach( (message: Message): void => {
+      .forEach((message: Message): void => {
         messagesService.addMessage(
           new Message({
             author: echo,
@@ -81,12 +80,12 @@ export class ChatExampleData {
           })
         );
       },
-                null);
+        null);
 
 
     // reverse bot
     messagesService.messagesForThreadUser(tRev, rev)
-      .forEach( (message: Message): void => {
+      .forEach((message: Message): void => {
         messagesService.addMessage(
           new Message({
             author: rev,
@@ -95,11 +94,11 @@ export class ChatExampleData {
           })
         );
       },
-                null);
+        null);
 
     // waiting bot
     messagesService.messagesForThreadUser(tWait, wait)
-      .forEach( (message: Message): void => {
+      .forEach((message: Message): void => {
 
         let waitTime: number = parseInt(message.text, 10);
         let reply: string;
@@ -123,7 +122,7 @@ export class ChatExampleData {
           },
           waitTime * 1000);
       },
-                null);
+        null);
 
 
   }

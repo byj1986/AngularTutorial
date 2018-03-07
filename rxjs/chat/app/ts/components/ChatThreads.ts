@@ -1,11 +1,7 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy
-} from '@angular/core';
-import {ThreadsService} from '../services/services';
-import {Observable} from 'rxjs';
-import {Thread} from '../models';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ThreadsService } from '../services/services';
+import { Observable } from 'rxjs';
+import { Thread } from '../models';
 
 @Component({
   inputs: ['thread'],
@@ -35,7 +31,7 @@ export class ChatThread implements OnInit {
 
   ngOnInit(): void {
     this.threadsService.currentThread
-      .subscribe( (currentThread: Thread) => {
+      .subscribe((currentThread: Thread) => {
         this.selected = currentThread &&
           this.thread &&
           (currentThread.id === this.thread.id);

@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Subject, BehaviorSubject, Observable} from 'rxjs';
-import {Thread, Message} from '../models';
-import {MessagesService} from './MessagesService';
+import { Injectable } from '@angular/core';
+import { Subject, BehaviorSubject, Observable } from 'rxjs';
+import { Thread, Message } from '../models';
+import { MessagesService } from './MessagesService';
 import * as _ from 'underscore';
 
 @Injectable()
@@ -24,8 +24,8 @@ export class ThreadsService {
   constructor(private messagesService: MessagesService) {
 
     this.threads = messagesService.messages
-      .map( (messages: Message[]) => {
-        let threads: {[key: string]: Thread} = {};
+      .map((messages: Message[]) => {
+        let threads: { [key: string]: Thread } = {};
         // Store the message's thread in our accumulator `threads`
         messages.map((message: Message) => {
           threads[message.thread.id] = threads[message.thread.id] ||
@@ -34,7 +34,7 @@ export class ThreadsService {
           // Cache the most recent message for each thread
           let messagesThread: Thread = threads[message.thread.id];
           if (!messagesThread.lastMessage ||
-              messagesThread.lastMessage.sentAt < message.sentAt) {
+            messagesThread.lastMessage.sentAt < message.sentAt) {
             messagesThread.lastMessage = message;
           }
         });
@@ -49,19 +49,20 @@ export class ThreadsService {
 
     this.currentThreadMessages = this.currentThread
       .combineLatest(messagesService.messages,
-                     (currentThread: Thread, messages: Message[]) => {
-        if (currentThread && messages.length > 0) {
-          return _.chain(messages)
-            .filter((message: Message) =>
-                    (message.thread.id === currentThread.id))
-            .map((message: Message) => {
-              message.isRead = true;
-              return message; })
-            .value();
-        } else {
-          return [];
-        }
-      });
+        (currentThread: Thread, messages: Message[]) => {
+          if (currentThread && messages.length > 0) {
+            return _.chain(messages)
+              .filter((message: Message) =>
+                (message.thread.id === currentThread.id))
+              .map((message: Message) => {
+                message.isRead = true;
+                return message;
+              })
+              .value();
+          } else {
+            return [];
+          }
+        });
 
     this.currentThread.subscribe(this.messagesService.markThreadAsRead);
   }
