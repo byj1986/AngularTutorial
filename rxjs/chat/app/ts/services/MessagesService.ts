@@ -26,6 +26,12 @@ export class MessagesService {
   markThreadAsRead: Subject<any> = new Subject<any>();
 
   constructor() {
+
+    // let obs = Observable.create(observer => observer.next(1));
+
+    // obs.subscribe(v => console.log("1st subscriber: " + v));
+    // obs.subscribe(v => console.log("2nd subscriber: " + v));
+
     this.messages = this.updates
       // watch the updates and accumulate operations on the messages
       .scan((messages: Message[],
@@ -54,10 +60,10 @@ export class MessagesService {
     // entirely. The pros are that it is potentially clearer. The cons are that
     // the stream is no longer composable.
     this.create.map(function (message: Message): IMessagesOperation {
-        return (messages: Message[]) => {
-          return messages.concat(message);
-        };
-      }).subscribe(this.updates);
+      return (messages: Message[]) => {
+        return messages.concat(message);
+      };
+    }).subscribe(this.updates);
 
     this.newMessages.subscribe(this.create);
 
@@ -88,11 +94,11 @@ export class MessagesService {
 
   messagesForThreadUser(thread: Thread, user: User): Observable<Message> {
     return this.newMessages.filter((message: Message) => {
-        // belongs to this thread
-        return (message.thread.id === thread.id) &&
-          // and isn't authored by this user
-          (message.author.id !== user.id);
-      });
+      // belongs to this thread
+      return (message.thread.id === thread.id) &&
+        // and isn't authored by this user
+        (message.author.id !== user.id);
+    });
   }
 }
 
