@@ -24,7 +24,7 @@
 
 ## 使用番茄管理法--基础
   <p align="left">
-    <img src="workflow.jpg" alt="Pomodoro" width="480" height="300"/>
+    <img src="workflow.jpg" alt="workflow" width="480" height="300"/>
   </p>
   
 <font face="微软雅黑" size=4>**活动清单**</font>
@@ -38,7 +38,7 @@
 
 <font face="微软雅黑" size=4>**今日待办**</font>
   <p align="left">
-    <img src="list.jpg" alt="Pomodoro" width="300" height="200"/>
+    <img src="list.jpg" alt="todolist" width="300" height="200"/>
   </p>
   "今日待办"表格是在时间段内限定的承诺。在这张表格中，只让你看到今天可以达到的目标。
   事项的重要程度应该
@@ -51,7 +51,7 @@
 <font face="微软雅黑" size=4>**开始番茄时钟循环**</font>
 在明确了今日待办之后，就可以开始设定一个25分钟的定时器。
   <p align="left">
-    <img src="workflow2.jpg" alt="Pomodoro" width="360" height="240"/>
+    <img src="workflow2.jpg" alt="cycle" width="360" height="240"/>
   </p>
 
 <font face="微软雅黑" size=3>**工作**</font>
@@ -89,8 +89,15 @@
 #### 中断策略
 
   <p align="left">
-    <img src="interrupt.jpg" alt="Pomodoro" width="480" height="300"/>
+    <img src="interrupt.jpg" alt="interrupt" width="480" height="300"/>
   </p>
+
+如果任务被放下了，无论是暂时的还是长期的，当前番茄钟都必须作废。既不能算数，也不应该画X。要开始一个新的25分钟番茄钟替代它。如果需要，可以先休息一下再开始。
+不要把几个被打断的番茄钟合并成一个25分钟的番茄钟。
+> **原因**
+> 1. 失去了25分钟一个番茄钟的节奏
+> 2. 容易屈服于诱惑(如果可以累加，遇到什么都中断)
+
 
 #### **内部中断**
   直觉向心智发出信号，告诉自己去做当前专注活动以外的事情。
@@ -101,13 +108,14 @@
   * **不要开始番茄时钟**
   这些都是来自内部的本能。产生这些行为的原因有很多，但彻底弄清原因之前，不要开始番茄时钟，因为即使开始，在25分钟内也会被这些原因打断。
 
+  * **如果已经开始**
   1. **接受**：实事求是，每天遇到多少次这样的中断，是哪种类型的中断。
   2. **记录**：在今日代办表格下方，填上待办事项(如果是计划外的紧急事件)；
   在今日代办表格当前活动的右边，画一个撇号(')。
   3. **继续**：记录完后，立即继续手头上的工作，避免真的被打断。
 
   > 某些事情允许在番茄时钟内同时做，例如喝水，但只有在休息期间才能去续杯。
-  
+
 #### **外部中断**
   有人找你询问或请你帮忙，并等待你的答复
 ###预估
@@ -117,8 +125,8 @@
 
 1. 机械/电子番茄钟
   <p align="left">
-    <img src="timer.jpg" alt="Pomodoro" width="240" height="240"/>
-    <img src="timer2.jpg" alt="Pomodoro" width="240" height="240"/>
+    <img src="timer.jpg" alt="timer1" width="240" height="240"/>
+    <img src="timer2.jpg" alt="timer2" width="240" height="240"/>
   </p>
 
 2. 手机App
