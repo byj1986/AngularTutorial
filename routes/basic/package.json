@@ -30,7 +30,7 @@
     "go": "^3.0.0-rc.3",
     "html-webpack-plugin": "1.6.0",
     "imports-loader": "0.6.4",
-    "lodash": "3.10.1",
+    "lodash": "4.17.11",
     "moment": "2.21.0",
     "node-libs-browser": "0.5.3",
     "optimist": "0.6.1",
