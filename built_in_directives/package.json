@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/jasmine": "2.2.30",
     "@types/node": "6.0.42",
-    "bootstrap-sass": "3.3.5",
+    "bootstrap-sass": "3.4.1",
     "chunk-manifest-webpack-plugin": "0.0.1",
     "css-loader": "0.15.5",
     "exports-loader": "0.6.2",
